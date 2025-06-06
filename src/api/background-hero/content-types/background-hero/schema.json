@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "background_heroes",
+  "info": {
+    "singularName": "background-hero",
+    "pluralName": "background-heroes",
+    "displayName": "Background-hero"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Tampil": {
+      "type": "boolean"
+    },
+    "urutan": {
+      "type": "integer"
+    },
+    "hero_section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hero-section.hero-section",
+      "inversedBy": "backgrounds"
+    }
+  }
+}

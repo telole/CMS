@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navbars",
+  "info": {
+    "singularName": "navbar",
+    "pluralName": "navbars",
+    "displayName": "Navbar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "urutan": {
+      "type": "integer"
+    },
+    "tampil": {
+      "type": "boolean"
+    },
+    "navbar": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::navbar.navbar"
+    }
+  }
+}
