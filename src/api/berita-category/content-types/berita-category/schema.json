@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "berita_categories",
+  "info": {
+    "singularName": "berita-category",
+    "pluralName": "berita-categories",
+    "displayName": "Berita-Category"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "berita": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::berita.berita",
+      "inversedBy": "berita_categories"
+    }
+  }
+}

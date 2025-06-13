@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dosens",
+  "info": {
+    "singularName": "dosen",
+    "pluralName": "dosens",
+    "displayName": "Dosen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "Deskripsi": {
+      "type": "text"
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "deskripsi_dosen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::deskripsi-dosen.deskripsi-dosen",
+      "mappedBy": "dosen"
+    },
+    "code": {
+      "type": "uid"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_steps",
+  "info": {
+    "displayName": "Steps"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Deskripsi": {
+      "type": "text"
+    },
+    "Urutan": {
+      "type": "integer"
+    },
+    "Posisi": {
+      "type": "enumeration",
+      "enum": [
+        "Kiri",
+        "Kanan"
+      ]
+    }
+  },
+  "config": {}
+}

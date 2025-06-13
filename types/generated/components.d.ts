@@ -1,5 +1,16 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SharedEducation extends Struct.ComponentSchema {
+  collectionName: 'components_shared_educations';
+  info: {
+    displayName: 'Education';
+  };
+  attributes: {
+    major: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -62,14 +73,29 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSteps extends Struct.ComponentSchema {
+  collectionName: 'components_shared_steps';
+  info: {
+    displayName: 'Steps';
+  };
+  attributes: {
+    Deskripsi: Schema.Attribute.Text;
+    Posisi: Schema.Attribute.Enumeration<['Kiri', 'Kanan']>;
+    Title: Schema.Attribute.String;
+    Urutan: Schema.Attribute.Integer;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'shared.education': SharedEducation;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.steps': SharedSteps;
     }
   }
 }

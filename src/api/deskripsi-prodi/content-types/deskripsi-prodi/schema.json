@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deskripsi_prodis",
+  "info": {
+    "singularName": "deskripsi-prodi",
+    "pluralName": "deskripsi-prodis",
+    "displayName": "DeskripsiProdi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks"
+    },
+    "prodi": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::prodi.prodi",
+      "mappedBy": "deskripsi_prodi"
+    },
+    "peluang": {
+      "type": "text"
+    }
+  }
+}

@@ -402,6 +402,35 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiAlurDaftarAlurDaftar extends Struct.CollectionTypeSchema {
+  collectionName: 'alur_daftars';
+  info: {
+    displayName: 'Alur-Daftar';
+    pluralName: 'alur-daftars';
+    singularName: 'alur-daftar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::alur-daftar.alur-daftar'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    step: Schema.Attribute.Component<'shared.steps', true>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -434,41 +463,34 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBackgroundHeroBackgroundHero
+export interface ApiBeritaCategoryBeritaCategory
   extends Struct.CollectionTypeSchema {
-  collectionName: 'background_heroes';
+  collectionName: 'berita_categories';
   info: {
-    displayName: 'Background-hero';
-    pluralName: 'background-heroes';
-    singularName: 'background-hero';
+    displayName: 'Berita-Category';
+    pluralName: 'berita-categories';
+    singularName: 'berita-category';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    berita: Schema.Attribute.Relation<'manyToMany', 'api::berita.berita'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    hero_section: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::hero-section.hero-section'
-    >;
-    Image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::background-hero.background-hero'
+      'api::berita-category.berita-category'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    Tampil: Schema.Attribute.Boolean;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    urutan: Schema.Attribute.Integer;
   };
 }
 
@@ -484,6 +506,11 @@ export interface ApiBeritaBerita extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    berita_categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::berita-category.berita-category'
+    >;
+    Content: Schema.Attribute.Blocks;
     Cover: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -491,7 +518,6 @@ export interface ApiBeritaBerita extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -507,34 +533,99 @@ export interface ApiBeritaBerita extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiDeskripsiJurusanDeskripsiJurusan
+export interface ApiDeskripsiDosenDeskripsiDosen
   extends Struct.CollectionTypeSchema {
-  collectionName: 'deskripsi_jurusans';
+  collectionName: 'deskripsi_dosens';
   info: {
-    displayName: 'DeskripsiJurusan';
-    pluralName: 'deskripsi-jurusans';
-    singularName: 'deskripsi-jurusan';
+    displayName: 'DeskripsiDosen';
+    pluralName: 'deskripsi-dosens';
+    singularName: 'deskripsi-dosen';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Content: Schema.Attribute.Text;
+    About: Schema.Attribute.Text;
+    Address: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    deskripsi_jurusan: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::deskripsi-jurusan.deskripsi-jurusan'
-    >;
+    dosen: Schema.Attribute.Relation<'oneToOne', 'api::dosen.dosen'>;
+    Education: Schema.Attribute.Component<'shared.education', false>;
+    email: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::deskripsi-jurusan.deskripsi-jurusan'
+      'api::deskripsi-dosen.deskripsi-dosen'
     > &
       Schema.Attribute.Private;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year_in: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiDeskripsiProdiDeskripsiProdi
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'deskripsi_prodis';
+  info: {
+    displayName: 'DeskripsiProdi';
+    pluralName: 'deskripsi-prodis';
+    singularName: 'deskripsi-prodi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::deskripsi-prodi.deskripsi-prodi'
+    > &
+      Schema.Attribute.Private;
+    peluang: Schema.Attribute.Text;
+    prodi: Schema.Attribute.Relation<'oneToOne', 'api::prodi.prodi'>;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiDosenDosen extends Struct.CollectionTypeSchema {
+  collectionName: 'dosens';
+  info: {
+    displayName: 'Dosen';
+    pluralName: 'dosens';
+    singularName: 'dosen';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.UID;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Deskripsi: Schema.Attribute.Text;
+    deskripsi_dosen: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::deskripsi-dosen.deskripsi-dosen'
+    >;
+    Foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::dosen.dosen'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -573,69 +664,30 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiHeroSectionHeroSection extends Struct.CollectionTypeSchema {
-  collectionName: 'hero_sections';
+export interface ApiHeroHero extends Struct.SingleTypeSchema {
+  collectionName: 'heroes';
   info: {
-    displayName: 'Hero-Section';
-    pluralName: 'hero-sections';
-    singularName: 'hero-section';
+    displayName: 'Hero';
+    pluralName: 'heroes';
+    singularName: 'hero';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    backgrounds: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::background-hero.background-hero'
-    >;
-    Button_text: Schema.Attribute.String;
-    Button_url: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hero-section.hero-section'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiJurusanJurusan extends Struct.CollectionTypeSchema {
-  collectionName: 'jurusans';
-  info: {
-    displayName: 'Jurusan';
-    pluralName: 'jurusans';
-    singularName: 'jurusan';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Akreditasi: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Foto: Schema.Attribute.Media<
+    Background: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::jurusan.jurusan'
-    > &
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Nama: Schema.Attribute.String;
+    Headline: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
+      Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'Nama'>;
+    Subheadline: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -671,6 +723,67 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     url: Schema.Attribute.String;
     urutan: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
+  collectionName: 'partners';
+  info: {
+    displayName: 'Partner';
+    pluralName: 'partners';
+    singularName: 'partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::partner.partner'
+    > &
+      Schema.Attribute.Private;
+    Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProdiProdi extends Struct.CollectionTypeSchema {
+  collectionName: 'prodis';
+  info: {
+    displayName: 'Prodi';
+    pluralName: 'prodis';
+    singularName: 'prodi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Akreditasi: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deskripsi_prodi: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::deskripsi-prodi.deskripsi-prodi'
+    >;
+    Foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::prodi.prodi'> &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    SLUG: Schema.Attribute.UID<'Name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1184,14 +1297,18 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::alur-daftar.alur-daftar': ApiAlurDaftarAlurDaftar;
       'api::author.author': ApiAuthorAuthor;
-      'api::background-hero.background-hero': ApiBackgroundHeroBackgroundHero;
+      'api::berita-category.berita-category': ApiBeritaCategoryBeritaCategory;
       'api::berita.berita': ApiBeritaBerita;
-      'api::deskripsi-jurusan.deskripsi-jurusan': ApiDeskripsiJurusanDeskripsiJurusan;
+      'api::deskripsi-dosen.deskripsi-dosen': ApiDeskripsiDosenDeskripsiDosen;
+      'api::deskripsi-prodi.deskripsi-prodi': ApiDeskripsiProdiDeskripsiProdi;
+      'api::dosen.dosen': ApiDosenDosen;
       'api::global.global': ApiGlobalGlobal;
-      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
-      'api::jurusan.jurusan': ApiJurusanJurusan;
+      'api::hero.hero': ApiHeroHero;
       'api::navbar.navbar': ApiNavbarNavbar;
+      'api::partner.partner': ApiPartnerPartner;
+      'api::prodi.prodi': ApiProdiProdi;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prodis",
+  "info": {
+    "singularName": "prodi",
+    "pluralName": "prodis",
+    "displayName": "Prodi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Akreditasi": {
+      "type": "string"
+    },
+    "SLUG": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "deskripsi_prodi": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::deskripsi-prodi.deskripsi-prodi",
+      "inversedBy": "prodi"
+    }
+  }
+}

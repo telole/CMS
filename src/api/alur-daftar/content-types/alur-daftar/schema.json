@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "alur_daftars",
+  "info": {
+    "singularName": "alur-daftar",
+    "pluralName": "alur-daftars",
+    "displayName": "Alur-Daftar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "step": {
+      "type": "component",
+      "component": "shared.steps",
+      "repeatable": true
+    }
+  }
+}

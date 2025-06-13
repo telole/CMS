@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deskripsi_dosens",
+  "info": {
+    "singularName": "deskripsi-dosen",
+    "pluralName": "deskripsi-dosens",
+    "displayName": "DeskripsiDosen"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dosen": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dosen.dosen",
+      "inversedBy": "deskripsi_dosen"
+    },
+    "About": {
+      "type": "text"
+    },
+    "Address": {
+      "type": "text"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "year_in": {
+      "type": "integer"
+    },
+    "Education": {
+      "type": "component",
+      "component": "shared.education",
+      "repeatable": false
+    }
+  }
+}

@@ -14,8 +14,8 @@
     "Title": {
       "type": "string"
     },
-    "Description": {
-      "type": "text"
+    "Content": {
+      "type": "blocks"
     },
     "Cover": {
       "type": "media",
@@ -36,6 +36,12 @@
     "slug": {
       "type": "uid",
       "targetField": "Title"
+    },
+    "berita_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::berita-category.berita-category",
+      "mappedBy": "berita"
     }
   }
 }
