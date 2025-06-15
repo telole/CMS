@@ -402,6 +402,36 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiAlasanAlasan extends Struct.CollectionTypeSchema {
+  collectionName: 'alasans';
+  info: {
+    displayName: 'Alasan';
+    pluralName: 'alasans';
+    singularName: 'alasan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    List: Schema.Attribute.Component<'shared.list', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::alasan.alasan'
+    > &
+      Schema.Attribute.Private;
+    Model: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAlurDaftarAlurDaftar extends Struct.CollectionTypeSchema {
   collectionName: 'alur_daftars';
   info: {
@@ -694,7 +724,7 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
+export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
   collectionName: 'navbars';
   info: {
     displayName: 'Navbar';
@@ -708,21 +738,17 @@ export interface ApiNavbarNavbar extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    label: Schema.Attribute.String;
+    header: Schema.Attribute.DynamicZone<['shared.item']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::navbar.navbar'
     > &
       Schema.Attribute.Private;
-    navbar: Schema.Attribute.Relation<'oneToOne', 'api::navbar.navbar'>;
     publishedAt: Schema.Attribute.DateTime;
-    tampil: Schema.Attribute.Boolean;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    url: Schema.Attribute.String;
-    urutan: Schema.Attribute.Integer;
   };
 }
 
@@ -781,6 +807,68 @@ export interface ApiProdiProdi extends Struct.CollectionTypeSchema {
     Name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     SLUG: Schema.Attribute.UID<'Name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
+  collectionName: 'programs';
+  info: {
+    displayName: 'Program';
+    pluralName: 'programs';
+    singularName: 'program';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    Icon: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::program.program'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSelayangPandangSelayangPandang
+  extends Struct.SingleTypeSchema {
+  collectionName: 'selayang_pandangs';
+  info: {
+    displayName: 'Selayang-Pandang';
+    pluralName: 'selayang-pandangs';
+    singularName: 'selayang-pandang';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Author: Schema.Attribute.String;
+    AuthorTitle: Schema.Attribute.String;
+    Content: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::selayang-pandang.selayang-pandang'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1297,6 +1385,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::alasan.alasan': ApiAlasanAlasan;
       'api::alur-daftar.alur-daftar': ApiAlurDaftarAlurDaftar;
       'api::author.author': ApiAuthorAuthor;
       'api::berita-category.berita-category': ApiBeritaCategoryBeritaCategory;
@@ -1309,6 +1398,8 @@ declare module '@strapi/strapi' {
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::partner.partner': ApiPartnerPartner;
       'api::prodi.prodi': ApiProdiProdi;
+      'api::program.program': ApiProgramProgram;
+      'api::selayang-pandang.selayang-pandang': ApiSelayangPandangSelayangPandang;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_items",
+  "info": {
+    "displayName": "Item"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "Path": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

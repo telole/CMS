@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "alasans",
+  "info": {
+    "singularName": "alasan",
+    "pluralName": "alasans",
+    "displayName": "Alasan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "List": {
+      "type": "component",
+      "component": "shared.list",
+      "repeatable": true
+    },
+    "Model": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

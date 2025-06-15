@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "selayang_pandangs",
+  "info": {
+    "singularName": "selayang-pandang",
+    "pluralName": "selayang-pandangs",
+    "displayName": "Selayang-Pandang"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Content": {
+      "type": "text"
+    },
+    "Author": {
+      "type": "string"
+    },
+    "AuthorTitle": {
+      "type": "string"
+    },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

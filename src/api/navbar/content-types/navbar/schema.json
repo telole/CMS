@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "navbars",
   "info": {
     "singularName": "navbar",
@@ -11,22 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "label": {
-      "type": "string"
-    },
-    "url": {
-      "type": "string"
-    },
-    "urutan": {
-      "type": "integer"
-    },
-    "tampil": {
-      "type": "boolean"
-    },
-    "navbar": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::navbar.navbar"
+    "header": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.item"
+      ]
     }
   }
 }

@@ -11,6 +11,29 @@ export interface SharedEducation extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_items';
+  info: {
+    displayName: 'Item';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    Path: Schema.Attribute.String;
+  };
+}
+
+export interface SharedList extends Struct.ComponentSchema {
+  collectionName: 'components_shared_lists';
+  info: {
+    displayName: 'List';
+  };
+  attributes: {
+    Description: Schema.Attribute.Text;
+    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -20,6 +43,14 @@ export interface SharedMedia extends Struct.ComponentSchema {
   attributes: {
     file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
   };
+}
+
+export interface SharedName extends Struct.ComponentSchema {
+  collectionName: 'components_shared_names';
+  info: {
+    displayName: 'Name';
+  };
+  attributes: {};
 }
 
 export interface SharedQuote extends Struct.ComponentSchema {
@@ -90,7 +121,10 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.education': SharedEducation;
+      'shared.item': SharedItem;
+      'shared.list': SharedList;
       'shared.media': SharedMedia;
+      'shared.name': SharedName;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
