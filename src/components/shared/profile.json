@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_profiles",
+  "info": {
+    "displayName": "Profile"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

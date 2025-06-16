@@ -53,6 +53,16 @@ export interface SharedName extends Struct.ComponentSchema {
   attributes: {};
 }
 
+export interface SharedProfile extends Struct.ComponentSchema {
+  collectionName: 'components_shared_profiles';
+  info: {
+    displayName: 'Profile';
+  };
+  attributes: {
+    Text: Schema.Attribute.Text;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -125,6 +135,7 @@ declare module '@strapi/strapi' {
       'shared.list': SharedList;
       'shared.media': SharedMedia;
       'shared.name': SharedName;
+      'shared.profile': SharedProfile;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
