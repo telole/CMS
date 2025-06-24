@@ -1,23 +1,17 @@
 {
-  "kind": "collectionType",
-  "collectionName": "programs",
+  "kind": "singleType",
+  "collectionName": "logos",
   "info": {
-    "singularName": "program",
-    "pluralName": "programs",
-    "displayName": "Program"
+    "singularName": "logo",
+    "pluralName": "logos",
+    "displayName": "Logo"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
-      "type": "string"
-    },
-    "Description": {
-      "type": "text"
-    },
-    "Icon": {
+    "Logo": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
