@@ -28,6 +28,9 @@
         "videos",
         "audios"
       ]
+    },
+    "Icon": {
+      "type": "string"
     }
   }
 }

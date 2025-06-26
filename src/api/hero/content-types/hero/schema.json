@@ -26,6 +26,9 @@
         "videos",
         "audios"
       ]
+    },
+    "Headline2": {
+      "type": "string"
     }
   }
 }

@@ -36,6 +36,9 @@
       "relation": "oneToOne",
       "target": "api::deskripsi-prodi.deskripsi-prodi",
       "inversedBy": "prodi"
+    },
+    "Jenjang": {
+      "type": "string"
     }
   }
 }

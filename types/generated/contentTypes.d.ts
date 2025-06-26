@@ -387,6 +387,7 @@ export interface ApiAlasanAlasan extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Icon: Schema.Attribute.String;
     List: Schema.Attribute.Component<'shared.list', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -652,6 +653,7 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Headline: Schema.Attribute.String;
+    Headline2: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
       Schema.Attribute.Private;
@@ -765,6 +767,7 @@ export interface ApiProdiProdi extends Struct.CollectionTypeSchema {
       'api::deskripsi-prodi.deskripsi-prodi'
     >;
     Foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Jenjang: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::prodi.prodi'> &
       Schema.Attribute.Private;
@@ -822,7 +825,7 @@ export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Text;
-    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Icon: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
