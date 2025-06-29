@@ -903,6 +903,35 @@ export interface ApiTestimoniTestimoni extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWhatsappWhatsapp extends Struct.CollectionTypeSchema {
+  collectionName: 'whatsapps';
+  info: {
+    displayName: 'Whatsapp';
+    pluralName: 'whatsapps';
+    singularName: 'whatsapp';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::whatsapp.whatsapp'
+    > &
+      Schema.Attribute.Private;
+    Nomor: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Tampil: Schema.Attribute.Boolean;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1429,6 +1458,7 @@ declare module '@strapi/strapi' {
       'api::program.program': ApiProgramProgram;
       'api::selayang-pandang.selayang-pandang': ApiSelayangPandangSelayangPandang;
       'api::testimoni.testimoni': ApiTestimoniTestimoni;
+      'api::whatsapp.whatsapp': ApiWhatsappWhatsapp;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
