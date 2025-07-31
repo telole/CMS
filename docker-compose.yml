@@ -35,6 +35,7 @@ services:
     depends_on:
       db-sttp:
         condition: service_healthy
+        
   rev-proxy-strapi:
     image: nginx:alpine
     container_name: rev-proxy-strapi
