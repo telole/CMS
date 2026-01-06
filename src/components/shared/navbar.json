@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_navbars",
+  "info": {
+    "displayName": "navbar"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Path": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "string"
+    },
+    "NavbarChild": {
+      "type": "component",
+      "component": "shared.navbar-child",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

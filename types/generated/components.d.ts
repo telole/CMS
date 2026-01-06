@@ -11,6 +11,18 @@ export interface SharedEducation extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedHeader extends Struct.ComponentSchema {
+  collectionName: 'components_shared_headers';
+  info: {
+    displayName: 'header';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    Path: Schema.Attribute.String;
+  };
+}
+
 export interface SharedItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_items';
   info: {
@@ -50,6 +62,44 @@ export interface SharedName extends Struct.ComponentSchema {
     displayName: 'Name';
   };
   attributes: {};
+}
+
+export interface SharedNavbar extends Struct.ComponentSchema {
+  collectionName: 'components_shared_navbars';
+  info: {
+    displayName: 'navbar';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    NavbarChild: Schema.Attribute.Component<'shared.navbar-child', true>;
+    Path: Schema.Attribute.String;
+  };
+}
+
+export interface SharedNavbarChild extends Struct.ComponentSchema {
+  collectionName: 'components_shared_navbar_children';
+  info: {
+    displayName: 'NavbarChild';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    Path: Schema.Attribute.String;
+    SubNavbarChild: Schema.Attribute.Component<'shared.sub-navbar-child', true>;
+  };
+}
+
+export interface SharedProdis extends Struct.ComponentSchema {
+  collectionName: 'components_shared_prodis';
+  info: {
+    displayName: 'Prodis';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    Path: Schema.Attribute.String;
+  };
 }
 
 export interface SharedProfile extends Struct.ComponentSchema {
@@ -126,20 +176,37 @@ export interface SharedSteps extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSubNavbarChild extends Struct.ComponentSchema {
+  collectionName: 'components_shared_sub_navbar_children';
+  info: {
+    displayName: 'SubNavbarChild';
+  };
+  attributes: {
+    Icon: Schema.Attribute.String;
+    Label: Schema.Attribute.String;
+    Path: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.education': SharedEducation;
+      'shared.header': SharedHeader;
       'shared.item': SharedItem;
       'shared.list': SharedList;
       'shared.media': SharedMedia;
       'shared.name': SharedName;
+      'shared.navbar': SharedNavbar;
+      'shared.navbar-child': SharedNavbarChild;
+      'shared.prodis': SharedProdis;
       'shared.profile': SharedProfile;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
       'shared.steps': SharedSteps;
+      'shared.sub-navbar-child': SharedSubNavbarChild;
     }
   }
 }

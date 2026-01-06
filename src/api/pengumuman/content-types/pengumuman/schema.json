@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pengumumen",
+  "info": {
+    "singularName": "pengumuman",
+    "pluralName": "pengumumen",
+    "displayName": "Pengumuman"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text"
+    }
+  }
+}

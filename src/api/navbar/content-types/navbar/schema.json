@@ -14,7 +14,7 @@
     "header": {
       "type": "dynamiczone",
       "components": [
-        "shared.item"
+        "shared.header"
       ]
     }
   }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_sub_navbar_children",
+  "info": {
+    "displayName": "SubNavbarChild"
+  },
+  "options": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Path": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

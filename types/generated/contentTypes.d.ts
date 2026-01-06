@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAcaraKegiatanAcaraKegiatan
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'acara_kegiatans';
+  info: {
+    displayName: 'Acara-Kegiatan';
+    pluralName: 'acara-kegiatans';
+    singularName: 'acara-kegiatan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::acara-kegiatan.acara-kegiatan'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAlasanAlasan extends Struct.CollectionTypeSchema {
   collectionName: 'alasans';
   info: {
@@ -704,7 +733,7 @@ export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    header: Schema.Attribute.DynamicZone<['shared.item']>;
+    header: Schema.Attribute.DynamicZone<['shared.header']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -741,6 +770,34 @@ export interface ApiPartnerPartner extends Struct.CollectionTypeSchema {
     Logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPengumumanPengumuman extends Struct.CollectionTypeSchema {
+  collectionName: 'pengumumen';
+  info: {
+    displayName: 'Pengumuman';
+    pluralName: 'pengumumen';
+    singularName: 'pengumuman';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pengumuman.pengumuman'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1441,6 +1498,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::acara-kegiatan.acara-kegiatan': ApiAcaraKegiatanAcaraKegiatan;
       'api::alasan.alasan': ApiAlasanAlasan;
       'api::alur-daftar.alur-daftar': ApiAlurDaftarAlurDaftar;
       'api::author.author': ApiAuthorAuthor;
@@ -1453,6 +1511,7 @@ declare module '@strapi/strapi' {
       'api::logo.logo': ApiLogoLogo;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::partner.partner': ApiPartnerPartner;
+      'api::pengumuman.pengumuman': ApiPengumumanPengumuman;
       'api::prodi.prodi': ApiProdiProdi;
       'api::profile.profile': ApiProfileProfile;
       'api::program.program': ApiProgramProgram;

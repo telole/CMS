@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acara_kegiatans",
+  "info": {
+    "singularName": "acara-kegiatan",
+    "pluralName": "acara-kegiatans",
+    "displayName": "Acara-Kegiatan"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text"
+    }
+  }
+}
