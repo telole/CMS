@@ -13,6 +13,9 @@
   "attributes": {
     "Title": {
       "type": "text"
+    },
+    "Date": {
+      "type": "datetime"
     }
   }
 }
