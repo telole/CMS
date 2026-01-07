@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "akreditasis",
+  "info": {
+    "singularName": "akreditasi",
+    "pluralName": "akreditasis",
+    "displayName": "Akreditasi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Tumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Deskripsi": {
+      "type": "text"
+    },
+    "SubTitle": {
+      "type": "string"
+    },
+    "SubDeskripsi": {
+      "type": "text"
+    }
+  }
+}

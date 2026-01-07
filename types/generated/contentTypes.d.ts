@@ -402,6 +402,38 @@ export interface ApiAcaraKegiatanAcaraKegiatan
   };
 }
 
+export interface ApiAkreditasiAkreditasi extends Struct.CollectionTypeSchema {
+  collectionName: 'akreditasis';
+  info: {
+    displayName: 'Akreditasi';
+    pluralName: 'akreditasis';
+    singularName: 'akreditasi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Deskripsi: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::akreditasi.akreditasi'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    SubDeskripsi: Schema.Attribute.Text;
+    SubTitle: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    Tumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAlasanAlasan extends Struct.CollectionTypeSchema {
   collectionName: 'alasans';
   info: {
@@ -582,8 +614,9 @@ export interface ApiDeskripsiDosenDeskripsiDosen
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dosen: Schema.Attribute.Relation<'oneToOne', 'api::dosen.dosen'>;
-    Education: Schema.Attribute.Component<'shared.education', false>;
+    Education: Schema.Attribute.Component<'shared.education', true>;
     email: Schema.Attribute.String;
+    Foto: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -688,6 +721,38 @@ export interface ApiHeroHero extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Subheadline: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiKurikulumKurikulum extends Struct.CollectionTypeSchema {
+  collectionName: 'kurikulums';
+  info: {
+    displayName: 'Kurikulum';
+    pluralName: 'kurikulums';
+    singularName: 'kurikulum';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Deskripsi: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::kurikulum.kurikulum'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    SubDeskripsi: Schema.Attribute.Text;
+    SubTitle: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    Tumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1499,6 +1564,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::acara-kegiatan.acara-kegiatan': ApiAcaraKegiatanAcaraKegiatan;
+      'api::akreditasi.akreditasi': ApiAkreditasiAkreditasi;
       'api::alasan.alasan': ApiAlasanAlasan;
       'api::alur-daftar.alur-daftar': ApiAlurDaftarAlurDaftar;
       'api::author.author': ApiAuthorAuthor;
@@ -1508,6 +1574,7 @@ declare module '@strapi/strapi' {
       'api::deskripsi-prodi.deskripsi-prodi': ApiDeskripsiProdiDeskripsiProdi;
       'api::dosen.dosen': ApiDosenDosen;
       'api::hero.hero': ApiHeroHero;
+      'api::kurikulum.kurikulum': ApiKurikulumKurikulum;
       'api::logo.logo': ApiLogoLogo;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::partner.partner': ApiPartnerPartner;

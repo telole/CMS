@@ -17,6 +17,16 @@
       "target": "api::dosen.dosen",
       "inversedBy": "deskripsi_dosen"
     },
+    "Foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "About": {
       "type": "text"
     },
@@ -35,7 +45,7 @@
     "Education": {
       "type": "component",
       "component": "shared.education",
-      "repeatable": false
+      "repeatable": true
     }
   }
 }
