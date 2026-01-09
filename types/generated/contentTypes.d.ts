@@ -760,6 +760,32 @@ export interface ApiKurikulumKurikulum extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLinkLink extends Struct.CollectionTypeSchema {
+  collectionName: 'links';
+  info: {
+    displayName: 'Link';
+    pluralName: 'links';
+    singularName: 'link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiLogoLogo extends Struct.SingleTypeSchema {
   collectionName: 'logos';
   info: {
@@ -1577,6 +1603,7 @@ declare module '@strapi/strapi' {
       'api::dosen.dosen': ApiDosenDosen;
       'api::hero.hero': ApiHeroHero;
       'api::kurikulum.kurikulum': ApiKurikulumKurikulum;
+      'api::link.link': ApiLinkLink;
       'api::logo.logo': ApiLogoLogo;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::partner.partner': ApiPartnerPartner;
