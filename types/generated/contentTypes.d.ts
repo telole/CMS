@@ -697,6 +697,35 @@ export interface ApiDosenDosen extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDownloadDownload extends Struct.CollectionTypeSchema {
+  collectionName: 'downloads';
+  info: {
+    displayName: 'Download';
+    pluralName: 'downloads';
+    singularName: 'download';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::download.download'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiHeroHero extends Struct.SingleTypeSchema {
   collectionName: 'heroes';
   info: {
@@ -757,32 +786,6 @@ export interface ApiKurikulumKurikulum extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiLinkLink extends Struct.CollectionTypeSchema {
-  collectionName: 'links';
-  info: {
-    displayName: 'Link';
-    pluralName: 'links';
-    singularName: 'link';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::link.link'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Url: Schema.Attribute.String;
   };
 }
 
@@ -1019,6 +1022,35 @@ export interface ApiSelayangPandangSelayangPandang
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSosmedSosmed extends Struct.CollectionTypeSchema {
+  collectionName: 'sosmeds';
+  info: {
+    displayName: 'Sosmed';
+    pluralName: 'sosmeds';
+    singularName: 'sosmed';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sosmed.sosmed'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Url: Schema.Attribute.String;
   };
 }
 
@@ -1601,9 +1633,9 @@ declare module '@strapi/strapi' {
       'api::deskripsi-dosen.deskripsi-dosen': ApiDeskripsiDosenDeskripsiDosen;
       'api::deskripsi-prodi.deskripsi-prodi': ApiDeskripsiProdiDeskripsiProdi;
       'api::dosen.dosen': ApiDosenDosen;
+      'api::download.download': ApiDownloadDownload;
       'api::hero.hero': ApiHeroHero;
       'api::kurikulum.kurikulum': ApiKurikulumKurikulum;
-      'api::link.link': ApiLinkLink;
       'api::logo.logo': ApiLogoLogo;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::partner.partner': ApiPartnerPartner;
@@ -1612,6 +1644,7 @@ declare module '@strapi/strapi' {
       'api::profile.profile': ApiProfileProfile;
       'api::program.program': ApiProgramProgram;
       'api::selayang-pandang.selayang-pandang': ApiSelayangPandangSelayangPandang;
+      'api::sosmed.sosmed': ApiSosmedSosmed;
       'api::testimoni.testimoni': ApiTestimoniTestimoni;
       'api::whatsapp.whatsapp': ApiWhatsappWhatsapp;
       'plugin::content-releases.release': PluginContentReleasesRelease;

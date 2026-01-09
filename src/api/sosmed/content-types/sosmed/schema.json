@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "links",
+  "collectionName": "sosmeds",
   "info": {
-    "singularName": "link",
-    "pluralName": "links",
-    "displayName": "Link"
+    "singularName": "sosmed",
+    "pluralName": "sosmeds",
+    "displayName": "Sosmed"
   },
   "options": {
     "draftAndPublish": true
