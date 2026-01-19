@@ -12,10 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "header": {
-      "type": "dynamiczone",
-      "components": [
-        "shared.header"
-      ]
+      "type": "component",
+      "component": "shared.navbar",
+      "repeatable": true
     }
   }
 }
